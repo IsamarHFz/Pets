@@ -22,15 +22,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pets.R
 import com.example.pets.data.UserDataUiEvents
-import com.example.pets.ui.UserInputViewModel
 import com.example.pets.ui.ButtonComponent
 import com.example.pets.ui.TextComponent
 import com.example.pets.ui.TextFieldComponent
 import com.example.pets.ui.TopBar
+import com.example.pets.ui.UserInputViewModel
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun UserInputScreen(userInputViewModel: UserInputViewModel,
@@ -89,23 +92,24 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
 
 
             Spacer(modifier =  Modifier.weight(1f))
-
+            //Connection to database
             if(userInputViewModel.isValidState()){
                 ButtonComponent(
                     goToDetailsScreen = {
-                        println("=====================ComingHere")
-                        println("=====================${userInputViewModel.uiState.value.nameEntered} and ${userInputViewModel.uiState.value.animalSelected}")
-                        showWelcomeScreen(
-                            Pair(
-                                userInputViewModel.uiState.value.nameEntered,
-                                userInputViewModel.uiState.value.animalSelected
+                        val nameEntered = userInputViewModel.uiState.value.nameEntered
+                        val animalSelected = userInputViewModel.uiState.value.animalSelected
+                        if (nameEntered.isNotBlank() && animalSelected.isNotBlank()) {
+                            val database = Firebase.database
+                            val myRef = database.getReference("message")
+                            val userData = mapOf(
+                                "nom" to nameEntered,
+                                "anim" to animalSelected
                             )
-                        )
-
+                            myRef.setValue(userData)
+                            showWelcomeScreen(Pair(nameEntered, animalSelected))
+                        }
                     }
                 )
-
-
             }
         }
     }

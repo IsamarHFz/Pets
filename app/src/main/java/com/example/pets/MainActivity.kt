@@ -32,4 +32,5 @@ class MainActivity : ComponentActivity() {
     fun PetsApp(){
         FunFactsNavigationGraph()
     }
+
 }
