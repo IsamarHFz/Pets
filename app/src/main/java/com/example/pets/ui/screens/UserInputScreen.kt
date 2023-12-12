@@ -93,14 +93,15 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
 
             Spacer(modifier =  Modifier.weight(1f))
             //Connection to database
+            val database = Firebase.database
+            val myRef = database.getReference("message")
+            myRef.setValue("Hi")
             if(userInputViewModel.isValidState()){
                 ButtonComponent(
                     goToDetailsScreen = {
                         val nameEntered = userInputViewModel.uiState.value.nameEntered
                         val animalSelected = userInputViewModel.uiState.value.animalSelected
                         if (nameEntered.isNotBlank() && animalSelected.isNotBlank()) {
-                            val database = Firebase.database
-                            val myRef = database.getReference("message")
                             val userData = mapOf(
                                 "nom" to nameEntered,
                                 "anim" to animalSelected

@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "296500111077",
+    "firebase_url": "https://controladoresfirebase-default-rtdb.firebaseio.com",
+    "project_id": "controladoresfirebase",
+    "storage_bucket": "controladoresfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296500111077:android:55032490afe83d2078560c",
+        "android_client_info": {
+          "package_name": "com.example.controladoresfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3qWvrn1qVzUFHR4Hi3fkla6UYJs-TCX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296500111077:android:ce899a4607b09d9578560c",
+        "android_client_info": {
+          "package_name": "com.example.pets"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3qWvrn1qVzUFHR4Hi3fkla6UYJs-TCX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
